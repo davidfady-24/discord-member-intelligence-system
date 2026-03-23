@@ -33,3 +33,20 @@ structured multi-sheet Excel report — end-to-end automated.
 
 ## Tech stack
 Python · discord.py · Pandas · Regex · openpyxl · JSON · dotenv
+
+## Sample Output
+
+**Bot run log:**
+![Bot run](Screenshot%202026-03-23%20115412.png)
+
+**File output:**
+![File output](Screenshot%202026-03-23%20115831.png)
+
+**Member growth by month:**
+![Member growth](Screenshot%202026-03-23%20115852.png)
+
+**Monthly income:**
+![Monthly income](Screenshot%202026-03-23%20115902.png)
+
+**Summary stats:**
+![Summary stats](Screenshot%202026-03-23%20115915.png)

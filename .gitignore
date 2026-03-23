@@ -1,0 +1,15 @@
+# Sensitive data - never upload these
+.env
+state_embeds.json
+*.xlsx
+*.csv
+output/
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+env/
+venv/

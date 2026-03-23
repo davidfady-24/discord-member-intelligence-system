@@ -1,36 +1,35 @@
 # Discord Member Intelligence System
 
-An automated Python bot that scrapes a private Discord server's log channel,
+Automated Python bot that scrapes a private Discord server's log channel,
 parses subscription events, and compiles a full member database into a
-structured multi-sheet Excel report — completely end-to-end automated.
+structured multi-sheet Excel report — end-to-end automated.
 
 ## What it does
 - Fetches 3,500+ guild members via async Discord client with fallback chunking
 - Parses YAGPDB role-assignment embeds using regex to extract subscription events
 - Tracks every subscription lifecycle: start, end, renewal, duration
 - Resolves member identity across nickname changes
-- Exports 4 production-grade Excel sheets:
-  - All_Members · Premium_Subscriptions · Summary_Stats · Monthly_Income
-- Incremental snowflake-based checkpoint system — re-runs only scan new messages
+- Exports 13 production-grade Excel sheets including:
+  `All_Members` · `Premium_Subscriptions` · `Summary_Stats` ·
+  `Monthly_Income` · `Churn_Analysis` · `Retention_Cohorts` · `Top_Members`
+- Incremental snowflake-based checkpoint — re-runs only scan new messages
+- Atomic Excel write via temp-file swap (prevents corrupt output)
 
-## Results from production data
+## Results from production
 | Metric | Value |
 |--------|-------|
-| Members fetched | 3,500+ |
+| Members tracked | 3,500+ |
 | Subscriptions logged | 370 |
 | Total revenue tracked | 141,350 EGP |
 | Subscription uplift | +30% after pricing strategy change |
 | Retention rate | 34.4% |
+| Avg revenue per user | 579 EGP |
 
-## Technical highlights
-- Async Discord client with chunking strategy for large servers
-- Regex parsing of embed descriptions → Discord IDs, nicknames, duration text
-- `relativedelta` duration engine: converts "3 weeks and 2 days" → exact EGP pricing
-- Atomic Excel write via temp-file swap — prevents corrupt output on interruption
-- JSON checkpoint file for incremental state management
+## Setup
+1. Clone the repo
+2. Copy `.env.example` to `.env` and fill in your values
+3. Install dependencies: `pip install discord.py pandas openpyxl python-dateutil`
+4. Run: `python export_premium_daily.py`
 
-## Tools
-Python · discord.py · Pandas · Regex · openpyxl · JSON · Excel
-
-## Sample output
-![Sample Report](output_samples/sample_report.png)
+## Tech stack
+Python · discord.py · Pandas · Regex · openpyxl · JSON · dotenv
